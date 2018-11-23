@@ -17,18 +17,22 @@ Feature: Cleanup Draft Tests
         Then I click on element having css "div.gn-selection-actions"
         Then I click on element having css "div.gn-selection-actions i.fa-times"
         Then I accept alert
-        And I wait 3 seconds for element having css "div.alert-warning" to display
+        Then I wait for 1 sec
         
         # Remove editors
         When I navigate to "{endPointToTest}/srv/eng/admin.console#/organization"
         Then I click on link having partial text "Edi Thor"
         Then I click on element having css "button.btn-danger"
-        And I wait for 1 sec
+        Then I accept alert
+        Then I wait for 1 sec
         Then I click on link having partial text "Revi Ewer"
         Then I click on element having css "button.btn-danger"
-        And I wait for 1 sec
+        Then I accept alert
+        Then I wait for 1 sec
         Then I click on link having partial text "Edi Thor"
         Then I click on element having css "button.btn-danger"
+        Then I accept alert
+        Then I wait for 1 sec
         
         # Logout   
         When I hover over element having css ".gn-user-info"  

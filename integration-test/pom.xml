@@ -25,40 +25,14 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- These are the junit dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-
     <!-- These are the selenium-webdriver dependencies -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.5.3</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-server</artifactId>
-      <version>3.5.3</version>
+      <version>${selenium.version}</version>
     </dependency>
 
     <!-- These are the selenium-cucumber methods dependencies -->
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>23.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.codeborne</groupId>
-      <artifactId>phantomjsdriver</artifactId>
-      <version>1.4.3</version>
-    </dependency>
-
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -87,6 +61,7 @@
   <properties>
     <cucumber.version>1.2.5</cucumber.version>
     <webdriver.system>linux64</webdriver.system>
+    <selenium.version>3.5.3</selenium.version>
   </properties>
 
   <profiles>
