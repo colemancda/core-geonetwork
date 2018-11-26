@@ -1,7 +1,7 @@
 Feature: Create and publish record
-        An editor creates and publishes a record
+        An editor creates and a reviewer approves a record
  
- Scenario: Editor creates and publishes a record
+ Scenario: Editor creates and a reviewer approves a record
         # Login as editor
         When I navigate to "{endPointToTest}"
         And I wait 10 seconds for element having css "li.signin-dropdown" to display

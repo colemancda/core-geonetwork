@@ -23,7 +23,7 @@ Feature: Create (draft) editor
         And I double click on element having css "div[data-gn-multiselect*='Editor'] option"
         And I wait 3 seconds for element having css "select[data-ng-model='currentSelectionRight'] > option" to display
         When I click on element having id "gn-btn-user-save"
-        And I wait 2 seconds for element having css "div.alert.gn-info" to display
+        Then I wait 2 seconds for element having css "div.alert.gn-info.alert-success" to display
         
         # Add editor 2
         Then I navigate to "{endPointToTest}/srv/eng/admin.console#/organization"
@@ -38,7 +38,7 @@ Feature: Create (draft) editor
         And I double click on element having css "div[data-gn-multiselect*='Editor'] option"
         And I wait 3 seconds for element having css "select[data-ng-model='currentSelectionRight'] > option" to display
         When I click on element having id "gn-btn-user-save"
-        And I wait 2 seconds for element having css "div.alert.gn-info" to display
+        Then I wait 2 seconds for element having css "div.alert.gn-info.alert-success" to display
 
         # Add reviewer
         And I click on element having id "gn-btn-user-add"
@@ -52,7 +52,7 @@ Feature: Create (draft) editor
         And I double click on element having css "div[data-gn-multiselect*='Reviewer'] option"
         And I wait 3 seconds for element having css "select[data-ng-model='currentSelectionRight'] > option" to display
         When I click on element having id "gn-btn-user-save"
-        Then I wait 2 seconds for element having css "div.alert.gn-info" to display
+        Then I wait 2 seconds for element having css "div.alert.gn-info.alert-success" to display
         
         # Import templates, just in case
         Given I navigate to "{endPointToTest}/srv/eng/admin.console#/metadata"
@@ -64,4 +64,4 @@ Feature: Create (draft) editor
         And I hover over element having css ".gn-user-info"
         Then I wait 1 seconds for element having css "i.fa-sign-out" to display
         And I click on element having css "a > i.fa-sign-out"
-	      Then I wait 5 seconds for element having css "li.signin-dropdown" to display
+	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display

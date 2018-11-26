@@ -1,7 +1,7 @@
 Feature: Create Draft
-        When trying to edit the published record, a draft is created
+        When trying to edit the previously approved record, a draft is created and is visible to all editors in that group
  
- Scenario: When trying to edit the published record, a draft is created
+ Scenario: When trying to edit the previously approved record, a draft is created and is visible to all editors in that group
         Given I navigate to "{endPointToTest}"
         # Login as editor
         Then I wait 10 seconds for element having css "li.signin-dropdown" to display
@@ -32,4 +32,25 @@ Feature: Create Draft
         Then I wait 1 seconds for element having css ".fa-sign-out" to display
         Then I click on element having css ".fa-sign-out"
 	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display
+	      
+        # Login as editor2
+        When I navigate to "{endPointToTest}/srv/eng/catalog.search#/search"
+        Then I wait 10 seconds for element having css "li.signin-dropdown" to display
+	      When I click on element having css "li.signin-dropdown"
+        And I enter "editortest2" into input field having xpath "//*[@id='inputUsername']"
+        And I enter "editorpass" into input field having xpath "//*[@id='inputPassword']"
+        And I click on element having css "form > button.btn-primary"
+        And I wait 1 seconds for element having css "div.search-over" to display
+        
+        #Check draft is visible
+        When I navigate to "{endPointToTest}/srv/eng/catalog.search#/search"
+                
+        # Logout as editor2  
+        And I wait 5 seconds for element having css ".gn-user-info" to display
+        When I hover over element having css ".gn-user-info"  
+        Then I wait 1 seconds for element having css ".fa-sign-out" to display
+        Then I click on element having css ".fa-sign-out"
+	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display
+        Then I click on link having text "Draft"
+                
         

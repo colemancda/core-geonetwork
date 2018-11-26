@@ -125,21 +125,25 @@ public class ValidationService implements ApplicationContextAware {
 
         final IMetadataUtils metadataRepository = context.getBean(IMetadataUtils.class);
         for (String uuid : setOfUuidsToValidate) {
-            AbstractMetadata record = metadataRepository.findOneByUuid(uuid);
-            if (record == null) {
-                this.report.get("notFoundRecords").add(record.getId());
-            } else if (!accessMan.isOwner(serviceContext, String.valueOf(record.getId()))) {
-                this.report.get("notOwnerRecords").add(record.getId());
-            } else {
-                String idString = String.valueOf(record.getId());
-                boolean isValid = dataMan.doValidate(record.getDataInfo().getSchemaId(),
-                    idString,
-                    new Document(record.getXmlData(false)),
-                    serviceContext.getLanguage());
-                if (isValid) {
-                    this.report.get("validRecords").add(record.getId());
-                }
-                this.report.get("records").add(record.getId());
+            
+            if (!metadataRepository.existsMetadataUuid(uuid)) {
+                this.report.get("notFoundRecords").add(-1);
+            } 
+            
+            for(AbstractMetadata record : metadataRepository.findAllByUuid(uuid)) {
+            	if (!accessMan.isOwner(serviceContext, String.valueOf(record.getId()))) {
+	                this.report.get("notOwnerRecords").add(record.getId());
+	            } else {
+	                String idString = String.valueOf(record.getId());
+	                boolean isValid = dataMan.doValidate(record.getDataInfo().getSchemaId(),
+	                    idString,
+	                    new Document(record.getXmlData(false)),
+	                    serviceContext.getLanguage());
+	                if (isValid) {
+	                    this.report.get("validRecords").add(record.getId());
+	                }
+	                this.report.get("records").add(record.getId());
+	            }
             }
         }
     }

@@ -17,7 +17,7 @@ Feature: Cleanup Draft Tests
         Then I click on element having css "div.gn-selection-actions"
         Then I click on element having css "div.gn-selection-actions i.fa-times"
         Then I accept alert
-        Then I wait for 1 sec
+        Then I wait 5 seconds for element having css "div.alert.alert-warning" to display
         
         # Remove editors
         When I navigate to "{endPointToTest}/srv/eng/admin.console#/organization"
