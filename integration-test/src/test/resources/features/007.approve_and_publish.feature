@@ -18,7 +18,6 @@ Feature: Approve and Publish
         And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
         Then I click on element having css "div div.md-actions i.fa-cog"
         Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-unlock"
-        Then I accept alert
         Then I wait 3 seconds for element having css "div.alert-success" to display
                 
         # Logout as reviewer  
@@ -28,9 +27,9 @@ Feature: Approve and Publish
         Then I click on element having css ".fa-sign-out"
 	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display
         
-        #Check draft is visible
-        Given I navigate to "{endPointToTest}/srv/eng/catalog.search#/search"
-        Then I click on link having text "Draft"
+        #Check draft is visible to anonymous users
+        Given I navigate to "{endPointToTest}"
+        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"
         
         # Login as reviewer
 	      When I click on element having css "li.signin-dropdown"
@@ -45,7 +44,6 @@ Feature: Approve and Publish
         And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
         Then I click on element having css "div div.md-actions i.fa-cog"
         Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-lock"
-        Then I accept alert
         Then I wait 3 seconds for element having css "div.alert-success" to display
                 
         # Logout as reviewer  
