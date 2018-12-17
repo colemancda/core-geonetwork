@@ -1,6 +1,6 @@
 Feature: Workflow
  
- Scenario: Try to move through the workflow reviewing drafts, publishing and unpublishing.
+ Scenario: Try to move through the workflow reviewing records, publishing and unpublishing.
         
         Given I navigate to "{endPointToTest}"
         
@@ -64,10 +64,12 @@ Feature: Workflow
                 
         # Change status to SUBMITTED
         Given I navigate to "{endPointToTest}"
-        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Workflow 1')]"       
-        And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
-        Then I click on element having css "div div.md-actions i.fa-cog"
-        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-bell"
+        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"  
+        And I wait 3 seconds for element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved"     
+        Then I wait 3 seconds for element having css "div.gn-search-page div:nth-child(5) div.btn-group.md-actions i.fa-cog" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(5) div.btn-group.md-actions i.fa-cog"
+        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-code-fork"
         Then I wait 3 seconds for element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=2]" to display
         Then I wait for 1 sec
         Then I click on element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=4]"
@@ -75,20 +77,20 @@ Feature: Workflow
         Then I wait 3 seconds for element having css "div.alert-success" to display
         
         # Check I can navigate from approved instance to editing instance (draft)
-        #Given I navigate to "{endPointToTest}"
-        #Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"      
-        #And I wait 3 seconds for element having css ".see-draft.see-draft-not-approved" to display
-        #Then I click on element having css ".see-draft.see-draft-not-approved"  
-        #And I wait 3 seconds for element having css ".see-draft.see-draft-approved" to display
-        #Then I click on element having css ".see-draft.see-draft-approved"
-        #And I wait 3 seconds for element having css ".see-draft.see-draft-not-approved" to display
-        #Then I click on element having css ".see-draft.see-draft-not-approved"
+        Given I navigate to "{endPointToTest}"
+        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"      
+        And I wait 3 seconds for element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved"  
+        And I wait 2 seconds for element having css "div.gn-search-page div:nth-child(5) .see-draft.see-draft-approved" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(5) .see-draft.see-draft-approved"
+        And I wait 1 seconds for element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved"
                 
         # Logout  
         When I hover over element having css ".gn-user-info"  
         Then I wait 1 seconds for element having css ".fa-sign-out" to display
         Then I click on element having css ".fa-sign-out"
-	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display
+	      Then I wait 1 seconds for element having css "li.signin-dropdown" to display
         
         #Check "Draft" is still visible to anonymous users
         Given I navigate to "{endPointToTest}"
@@ -103,10 +105,12 @@ Feature: Workflow
                 
         # Change status to APPROVED
         Given I navigate to "{endPointToTest}"
-        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Workflow 1')]"       
-        And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
-        Then I click on element having css "div div.md-actions i.fa-cog"
-        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-bell"
+        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"      
+        And I wait 3 seconds for element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(4) .see-draft.see-draft-not-approved"    
+        Then I wait 3 seconds for element having css "div.gn-search-page div:nth-child(5) div.btn-group.md-actions i.fa-cog" to display
+        Then I click on element having css "div.gn-search-page div:nth-child(5) div.btn-group.md-actions i.fa-cog"
+        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-code-fork"
         Then I wait 3 seconds for element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=2]" to display
         Then I wait for 1 sec
         Then I click on element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=2]"
@@ -132,10 +136,10 @@ Feature: Workflow
         And I wait 1 seconds for element having css "div.search-over" to display
                 
         # Change status to RETIRED
-        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Workflow 1')]"       
-        And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
-        Then I click on element having css "div div.md-actions i.fa-cog"
-        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-bell"
+        Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Workflow 1')]"      
+        Then I wait 3 seconds for element having css "div.gn-search-page div.btn-group.md-actions i.fa-cog" to display
+        Then I click on element having css "div.gn-search-page div.btn-group.md-actions i.fa-cog"
+        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-code-fork"
         Then I wait 3 seconds for element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=3]" to display
         Then I wait for 1 sec
         Then I click on element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=3]"

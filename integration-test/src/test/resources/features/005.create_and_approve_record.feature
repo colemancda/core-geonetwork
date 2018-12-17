@@ -52,12 +52,12 @@ Feature: Create and publish record
         Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Metadata')]"
         And I wait 3 seconds for element having css "div div.md-actions i.fa-cog" to display
         Then I click on element having css "div div.md-actions i.fa-cog"
-        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-bell"
+        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-code-fork"
         Then I wait 3 seconds for element having css "div.alert-success" to display
         
         # Approve record
         Then I click on element having css "div div.md-actions i.fa-cog"
-        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-bell"
+        Then I click on element having css "div.btn-group.md-actions.open > ul > li > a[data-ng-click] > i.fa-code-fork"
         Then I wait 3 seconds for element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=2]" to display
         Then I wait for 1 sec
         Then I click on element having xpath "//form[@data-gn-metadata-status-updater]//input[@value=2]"

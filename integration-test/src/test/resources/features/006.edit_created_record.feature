@@ -24,7 +24,8 @@ Feature: Create Draft
         
         #Check draft has been created
         When I navigate to "{endPointToTest}/srv/eng/catalog.search#/search"
-        Then I click on link having text "Draft"
+        Then I click on link having text "Metadata"
+        And I wait 3 seconds for element having css ".see-draft.see-draft-not-approved" to display
                 
         # Logout as editor  
         And I wait 5 seconds for element having css ".gn-user-info" to display
@@ -40,9 +41,11 @@ Feature: Create Draft
         And I click on element having css "form > button.btn-primary"
         And I wait 1 seconds for element having css ".gn-user-info" to display
         
-        #Check draft is visible
+        #Check draft is visible to this editor
         When I navigate to "{endPointToTest}/srv/eng/catalog.search#/search"
-        Then I click on link having text "Draft"
+        Then I click on link having text "Metadata"
+        And I wait 3 seconds for element having css ".see-draft.see-draft-not-approved" to display
+        Then I click on element having css ".see-draft"
                 
         # Logout as editor2  
         And I wait 5 seconds for element having css ".gn-user-info" to display

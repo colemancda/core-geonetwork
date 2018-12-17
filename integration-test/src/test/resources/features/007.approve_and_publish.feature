@@ -1,7 +1,7 @@
 Feature: Approve and Publish
-        Given the previous draft, check that publishing works
+        Given the previous record, check that publishing works
  
- Scenario: When trying to edit the previously approved record, a draft is created and is visible to all editors in that group
+ Scenario: When trying to edit the previously approved record, an editing copy (draft) is created and is visible to all editors in that group
         
         Given I navigate to "{endPointToTest}"
         
@@ -27,7 +27,7 @@ Feature: Approve and Publish
         Then I click on element having css ".fa-sign-out"
 	      Then I wait 3 seconds for element having css "li.signin-dropdown" to display
         
-        #Check draft is visible to anonymous users
+        #Check published record is visible to anonymous users with editing instance (draft) contents
         Given I navigate to "{endPointToTest}"
         Then I click on element having xpath "//*/div[contains(@class, 'active')]//*[contains(text(), 'Draft')]"
         

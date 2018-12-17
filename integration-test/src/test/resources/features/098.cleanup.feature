@@ -5,6 +5,7 @@ Feature: Cleanup Draft Tests
         # Login as admin
         Given I navigate to "{endPointToTest}"
 	      When I click on element having css "li.signin-dropdown"
+        Then I wait 2 seconds for element having xpath "//*[@id='inputUsername']" to display
         And I enter "{adminUser}" into input field having xpath "//*[@id='inputUsername']"
         And I enter "{adminPassword}" into input field having xpath "//*[@id='inputPassword']"
         And I click on element having css "form > button.btn-primary"
